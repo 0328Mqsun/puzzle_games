@@ -1,4 +1,4 @@
-package com.example.puzzle_games;
+package com.example.puzzlegames;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
