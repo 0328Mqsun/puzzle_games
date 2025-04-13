@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "games")
 @Entity
 @Table(name="game_types")
 public class GameType {
@@ -28,9 +29,9 @@ public class GameType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@Column(name = "types_name")
-	private String name;
+	@Column(name = "types_name", nullable = false)
+	private String typeName;
 	
-    @OneToMany(mappedBy = "gameType")
+    @OneToMany(mappedBy = "gameType", fetch = FetchType.LAZY)
     private List<WordleGame> games;
 }

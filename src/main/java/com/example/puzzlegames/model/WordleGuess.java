@@ -22,7 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "game")
 @Entity
 @Table(name = "wordle_guesses")
 public class WordleGuess {
@@ -35,11 +35,11 @@ public class WordleGuess {
     @JoinColumn(name = "game_id", nullable = false)
     private WordleGame game;
 
-    @Column(name = "player_input",nullable = false)
+    @Column(name = "player_input",nullable = false, length = 10)
     private String playerInput;
 
-    @Column(name = "feedback",columnDefinition = "nvarchar(max)",nullable = false)
-    private String feedback; 
+    @Column(name = "feedback", nullable = false, length = 10)
+    private String feedback;
 
     @CreationTimestamp
     @Column(name = "created_at")
